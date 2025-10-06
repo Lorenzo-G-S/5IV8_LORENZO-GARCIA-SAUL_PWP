@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/validacion.js"></script>
+</head>
+<body>
+    <p> Todoslos formularios en la web, manejan metodos para el envio de las diferentes peticiones que realiza el usuario. 
+        Considerando la arquitectura cliente-servidor, 
+        el manejo de las peticiones se hace por medio del protocolo HTTP y actualmente por https, 
+        cada peticion debe ser atendida en un tiempo de respuesta conforme al modelo TCP/IP. 
+        los metodos del formulario SON
+    <li>
+        <ol>GET: <h1>este metodo se ecarga de enviar la informacion del formulario por medio de la salida esyandar 
+            (conocida como url), del navegador, esto propicia que ouedan existir,
+            inyecciones de codigo realizando violaciones a la seguridad del sistema.
+        </h1></ol>
+        <ol>
+            POST: <h1>este metodo se encarga de enviar la informacion para poder registrar un cambio o un nuevo
+                registro dentro del sistema, enviandola igual por el metodo estandar
+                pero mediante un ocultamiento, esto significa que no es visible para el usuario. Lo que nos
+                ofrece un mayor grado de seguridad en la informacion.
+            </h1>
+        </ol>
+        
+    </li>
+    <br>
+    <p>en resumen los metodos son:
+        <li>
+            <ul>GET: sirve para enviar y realizar operaciones de lectura o de consulta</ul>
+            <ul> POST: sirve para enviar y realizar operaciones de escritura o de modificación</ul>
+            <ul>DELETE: sirve para eliminar un recurso dentro del sistema, obteniendo una respuesta de actualizacion</ul>
+            <ul>Put: sirve para almacenar la informacion deim recurso particular y conectarse al servicio para realizar la actualizacion</ul>
+            <ul>HEAD: sirve para regresar el codigo de respuesta de cualquier cabecera HTTP asociada a un recurso</ul>
+        </li>
+    </p>
+    </p>
+
+   <div
+    class="container-form">
+    <form method="get" id="formulario" name="formulario" onsubmit="return validar(this)" action="">
+       <br>
+
+        <label for="">Nombre:</label>
+<br>
+        <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre"> 
+        
+<br>
+        <label for="">Edad:</label>
+<br>    
+        <input type="number" id="edad" name="edad" required placeholder="Escribe tu edad">
+<br>
+    <label for="email">Email:</label>
+
+    <input type="email" id="correo" name="correo" required placeholder="Ingresa Aquí tu correo">
+    
+<br>
+
+<input type="submit" value="Enviar Registro" name="Enviar">
+
+<br>
+
+<input type="reset" value="Borrar Registro" name="Borrar datos">
+
+</body>
+</html>

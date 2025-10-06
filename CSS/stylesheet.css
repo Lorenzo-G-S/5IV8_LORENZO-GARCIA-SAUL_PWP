@@ -1,0 +1,86 @@
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color:  #0C5F81;
+
+}
+
+hr{
+  border:none;
+  height: 4px;
+  background-color:black;
+}
+
+header{
+    background-color: #001B2E;
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+     border: 10px solid black;
+}
+
+div{
+    padding: 2rem;
+    text-align: justify;
+    border-radius: 10px;
+}
+
+.cuerpo{
+    background-color:#0D304D;
+    border: 7px dashed #001B2E ;
+}
+
+
+.figma{
+    background-color: #7299B4;
+    border: 3px dashed black;
+}
+
+.p1{
+    background-color: #7299B4;
+    border: 3px dashed black;
+    transition: all 0.3s ease;
+}
+
+.p1:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 3px solid #001B2E;
+}
+
+
+.p2{
+    background-color: #7299B4;
+    border: 3px dashed black;
+    transition: all 0.3s ease;
+
+}
+
+.p2:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 3px solid #001B2E;
+}
+
+.p3{
+    background-color: #7299B4;
+    border: 3px dashed black;
+    transition: all 0.3s ease;
+}
+
+.p3:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 3px solid #001B2E;
+}
+
+.p4{
+    background-color: #7299B4;
+    border: 3px dashed black;
+    transition: all 0.3s ease;
+}
+
+.p4:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 3px solid #001B2E;
+}
