@@ -19,6 +19,8 @@ header{
 }
 
 div{
+    max-width: 1200px;
+    margin: 2rem auto;
     padding: 2rem;
     text-align: justify;
     border-radius: 10px;
@@ -83,4 +85,24 @@ div{
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     border: 3px solid #001B2E;
+}
+
+a{
+    border-radius: 15px;
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 10px;
+    font-weight: 500;
+    border: 3px solid;
+    border-color: black;
+    background-color: #003153;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+background-color: #ABCAE1;
+box-shadow: 0 5px 15px #7299B4;
+border-color: #808080;
+color: black;
 }
