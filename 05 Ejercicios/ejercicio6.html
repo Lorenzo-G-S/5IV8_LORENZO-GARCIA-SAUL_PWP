@@ -8,13 +8,50 @@
 </head>
 <body>
     <div class="container">
-        <header><h3> </h3></header>
+        <header><h3> Ejercicio 6</h3></header>
        
         <aside>
-       
+       <p>6) Realizar un algoritmo que calcule la edad de una persona.</p>
+       <p>calcular la edad de una persona</p>
+       <p>Este algoritmo calcula la edad de una persona comparando su fecha de nacimiento con una fecha fija: el 11 de octubre de 2025.
+        El usuario ingresa día, mes y año, y el sistema valida que la fecha sea válida.
+        Luego, calcula cuántos años han pasado desde esa fecha hasta 2025, ajustando si aún no ha cumplido años ese año.
+        </p>
+        <p>Observé en internet y en IA una forma alternativa y aparentemente más rápida apartir de un selector de fecha (input type="date") Una vez elegida,
+         el sistema calcula automáticamente la edad comparando esa fecha con el 11 de octubre de 2025. No entendí por completo el como emplear las funciones,
+        y en vista de que se acercaba la hora de entrega profundizaré posteriormente
+</p>
         </aside>
 
         <div class="main">
+            <form name="formulario">
+        <h3>Formulario para cálculo de edad</h3>
+        <table class="table">
+            <tr>
+            Indique su fecha de nacimiento:
+            </tr>
+          <tr>
+            <td>Día de nacimiento:</td>
+            <td><input type="text" id="dia" onkeypress="return soloEnteros(event)"></td>
+          </tr>
+          <tr>
+            <td>Mes de nacimiento:</td>
+            <td><input type="text" id="mes" onkeypress="return soloEnteros(event)"></td>
+          </tr>
+          <tr>
+            <td>Año de nacimiento:</td>
+            <td><input type="text" id="anio" onkeypress="return soloEnteros(event)"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="button" value="Calcular Edad" onclick="calcularEdad()"></td>
+          </tr>
+          <tr>
+            <td>Edad:</td>
+            <td><input type="text" id="edad" readonly></td>
+          </tr>
+        </table>
+      </form>
 
         </div>
 
@@ -22,5 +59,6 @@
             <a  class="f" href="../05 Ejercicios/libro.html"> Regresar al menú</a>
         </footer>
     </div>
+    <script src="../05 Ejercicios/js/funciones6.js"></script>
 </body>
 </html>
