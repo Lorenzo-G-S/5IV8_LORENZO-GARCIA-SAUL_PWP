@@ -4,23 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio1</title>
-    <link rel="stylesheet" href="/05 Ejercicios/CSS/05.css">
+    <link rel="stylesheet" href="../05 Ejercicios/CSS/05.css">
 </head>
 <body>
+<div class="container">
     <header><h1>Ejercicio1</h1> </header>
-    <div class="container-main">
+    
+    <aside>
+        <p>1) Suponga que un individuo desea invertir su capital en un banco y desea saber cuanto dinero ganara después de un mes si el banco paga a razón de 8.05% mensual.</p>
+        <p>Del ejercicio 1, tenemos que agregar el campo numero de meses y sera una inversion de maximo 18 meses</p>
+    </aside>
+    
+    <div class="main">
         <br>
         <form action="" method="post" name="formulario">
-            <label for=""> Formulario para calculo de inversiones Banco Kawaii con un incremento del 8.05% anual</label>
+            <label for=""> <h3>Formulario para calculo de inversiones Banco Kawaii con un incremento del 8.05% anual</h3></label>
             <br>
             <div class="container-table">
                 <table class="table">
                     <tr>
                         <td>
-                            Introduce la cantidad que deseas invertir por todo 1 año:
+                            Introduce la cantidad que deseas invertir:
                         </td>
                         <td>
-                            <input type="text" name="cantidad" id="cantidadi" onkeypress="">
+                            <input type="text" name="cantidad" id="cantidadi" onkeypress="return validarn(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Introduce el número de meses (máximo 18):</td>
+                        <td>
+                            <input type="number" name="meses" id="mesesi" min="1" max="18">
                         </td>
                     </tr>
                     <tr>
@@ -28,7 +41,7 @@
 
                         </td>
                         <td>
-                            <input type="button" value="Calcular Interes" name="enviar" onclick="">
+                            <input type="button" value="Calcular Interes" name="enviar" onclick="interes()">
                         </td>
                     </tr>
                     <tr>
@@ -42,12 +55,18 @@
                     <tr>
                         <td></td>
                         <td>
-                            <input type="button" value="Borrar Datos" name="borrar" onclick="">
+                            <input type="button" value="Borrar Datos" name="borrar" onclick="borrari()">
                         </td>
                     </tr>
                 </table>
             </div>
         </form>
     </div>
+    <footer>
+        <a  class="f" href="../05 Ejercicios/libro.html"> Regresar al menú</a>
+    </footer>
+</div>
+
+<script src="../05 Ejercicios/js/funcionese1.js"></script>
 </body>
 </html>
