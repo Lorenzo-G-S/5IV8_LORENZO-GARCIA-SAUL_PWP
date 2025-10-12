@@ -16,12 +16,49 @@
         </aside>
 
         <div class="main">
-
+            <form name="formulario">
+                <h3>Formulario para cálculo de comisiones del vendedor</h3>
+                <table class="table">
+                    <tr>
+                        <td>Venta 1:</td>
+                        <td><input type="text" id="venta1" onkeypress="return soloNumeros(event)"></td>
+                    </tr>
+                    <tr>
+                        <td>Venta 2:</td>
+                        <td><input type="text" id="venta2" onkeypress="return soloNumeros(event)"></td>
+                    </tr>
+                    <tr>
+                        <td>Venta 3:</td>
+                        <td><input type="text" id="venta3" onkeypress="return soloNumeros(event)"></td>
+                    </tr>
+                    <tr>
+                        <td>Sueldo base:</td>
+                        <td><input type="text" id="sueldoBase" onkeypress="return soloNumeros(event)"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="Calcular Total" onclick="calcularComision()"></td>
+                    </tr>
+                    <tr>
+                        <td>Comisión total (10% de ventas):</td>
+                        <td><input type="text" id="comision" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Total recibido en el mes:</td>
+                        <td><input type="text" id="totalMes" readonly></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="Borrar Datos" onclick="borrarDatos()"></td>
+                    </tr>
+                </table>
+            </form>
         </div>
 
         <footer>
             <a  class="f" href="../05 Ejercicios/libro.html"> Regresar al menú</a>
         </footer>
     </div>
+    <script src="../05 Ejercicios/js/funciones2.js"></script>
 </body>
 </html>
