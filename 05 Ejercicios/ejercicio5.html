@@ -8,19 +8,53 @@
 </head>
 <body>
     <div class="container">
-        <header><h3> </h3></header>
+        <header><h3>Ejercicio 5 </h3></header>
        
         <aside>
-       
+       <p>5) Un maestro desea saber que porcentaje de hombres y que porcentaje de mujeres hay en un grupo de estudiantes.</p>
+        <p>Se debe de ingresar cantidad hombres y cantidad de mujeres y mostrar sus % correspondientes</p>
         </aside>
 
         <div class="main">
-
+            <form name="formulario">
+                <h3>Formulario para cálculo de porcentaje por género</h3>
+                <table class="table">
+                    <tr>
+                        <td>Cantidad de hombres:</td>
+                        <td><input type="text" id="cantidadHombres" onkeypress="return soloEnteros(event)"></td>
+                    </tr>
+                    <tr>
+                        <td>Cantidad de mujeres:</td>
+                        <td><input type="text" id="cantidadMujeres" onkeypress="return soloEnteros(event)"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="Calcular Porcentajes" onclick="calcularPorcentajes()"></td>
+                    </tr>
+                    <tr>
+                        <td>Total de estudiantes:</td>
+                        <td><input type="text" id="totalEstudiantes" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Porcentaje de hombres:</td>
+                        <td><input type="text" id="porcentajeHombres" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Porcentaje de mujeres:</td>
+                        <td><input type="text" id="porcentajeMujeres" readonly></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="Borrar Datos" onclick="borrarDatos()"></td>
+                    </tr>
+                </table>
+            </form>
         </div>
 
         <footer>
             <a  class="f" href="../05 Ejercicios/libro.html"> Regresar al menú</a>
         </footer>
     </div>
+    <script src="../05 Ejercicios/js/funciones5.js"></script>
 </body>
 </html>

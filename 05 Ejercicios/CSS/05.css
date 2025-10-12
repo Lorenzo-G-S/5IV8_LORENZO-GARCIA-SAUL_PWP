@@ -106,12 +106,12 @@ table {
 
 td {
     padding: 1rem 2rem;
-    border: 50px solid black;
+    border: 2px solid black;
     text-align: left;
 }
 
-td {
+th {
     padding: 12px 15px;
-    border: 1px solid #ddd;
+    border: 2px solid black;
     text-align: left;
 }
