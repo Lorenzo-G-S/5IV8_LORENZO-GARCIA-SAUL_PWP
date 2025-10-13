@@ -4,22 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritmo3</title>
+    <link rel="stylesheet" href="../06 Algoritmia/CSS/06.css">
 </head>
 <body>
-    <div class="main">
+    <div class="container">
         <header>
             <h1>Algoritmo 3</h1>
         </header>
 
         <aside>
-
+             <h4>Dada una lista de palabras encontrar la palabra que mas números de caracteres tenga.
+                <br>
+                <p>Por ejemplo: CASA =3 (C,A,S) PERO = 4 (P,E,R,O)
+                <br>
+                Considerando solamente el alfabeto A-Z, en mayusculas, Las palabras deberan estar separadas por una coma, no se aceptan espacios.  
+                </p>
+            </h4>
         </aside>
         <div class="main">
-
+                <input type="text" class="problema-input" placeholder="Ingrese las palabras separadas por una coma (,): " id="p3-input">
+                <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="calcularPalabraMayor()">Calcular palabras</button>
+                <pre class="problema-output" id="p3-output">Esperando datos...</pre>
         </div>
+
         <footer>
-            <a href="../06 Algoritmia/menu.html">Regresar</a>
+            <a class="f" href="../06 Algoritmia/menu.html">Regresar</a>
         </footer>
     </div>
+    <script src="../06 Algoritmia/js/A3.js"></script>
 </body>
 </html>

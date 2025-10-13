@@ -4,21 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algoritmo2</title>
+    <link rel="stylesheet" href="../06 Algoritmia/CSS/06.css">
 </head>
 <body>
-    <div class="main">
+    <div class="container">
         <header>
             <h1>Algoritmo 2</h1>
         </header>
 
         <aside>
-
+            <h3>Dados dos vectores <em>v1 = (x1, x2, x3, x4, x5, ..., xN), v2 = (y1, y2, y3, y4, y5, ..., yN)</em> y
+                teniendo permitido permutar el orden de dicho vector, encontrar el minimo profucto escalar entre ambos
+                vectores
+                <br>
+                (el producto escalar se forma de la siguiente manera: <em>x1*y1 + x2*y2 + x3*y3 + x4*y4 + ... +
+                    xN*yN</em>)
+            </h3>
         </aside>
         <div class="main">
-
+            <h4>Ejercicio por profesor</h4>
+            <div class="problema-content">
+                <div class="tablas" style="width: 100%; display: flex; justify-content: center;">
+                    <article>
+                    <table class="problema-table" style="width: 45%;">
+                        <h3>Vector X</h3>
+                            <tr>
+                                <td>x1</td>
+                                <td><input type="number" class="problema-input" id="p2-x1"></td>
+                            </tr>
+                            <tr>
+                                <td>x2</td>
+                                <td><input type="number" class="problema-input" id="p2-x2"></td>
+                            </tr>
+                            <tr>
+                                <td>x3</td>
+                                <td><input type="number" class="problema-input" id="p2-x3"></td>
+                            </tr>
+                            <tr>
+                                <td>x4</td>
+                                <td><input type="number" class="problema-input" id="p2-x4"></td>
+                            </tr>
+                                <td>x5</td>
+                                <td><input type="number" class="problema-input" id="p2-x5"></td>
+                            </tr>
+                    </table>
+                    
+                    </article>
+                    <br>
+                    <article>
+                    <table class="problema-table" style="width: 45%;">
+                        <h3>Vector Y</h3>
+                            <tr>
+                                <td>y1</td>
+                                <td><input type="number" class="problema-input" id="p2-x1"></td>
+                            </tr>
+                            <tr>
+                                <td>y2</td>
+                                <td><input type="number" class="problema-input" id="p2-x2"></td>
+                            </tr>
+                            <tr>
+                                <td>y3</td>
+                                <td><input type="number" class="problema-input" id="p2-x3"></td>
+                            </tr>
+                            <tr>
+                                <td>y4</td>
+                                <td><input type="number" class="problema-input" id="p2-x4"></td>
+                            </tr>
+                                <td>y5</td>
+                                <td><input type="number" class="problema-input" id="p2-x5"></td>
+                            </tr>
+                    </table>
+                    </article>
+                </div>
+                <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="">Calcular Vector</button>
+                <pre class="problema-output" id="p1-output">Esperando datos...</pre>
+            </div>
         </div>
         <footer>
-            <a href="../06 Algoritmia/menu.html">Regresar</a>
+            <a  class="f"href="../06 Algoritmia/menu.html">Regresar</a>
         </footer>
     </div>
 </body>
