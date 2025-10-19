@@ -13,10 +13,21 @@
         </header>
         
         <aside>
-            <p>Deberán de crear un formulario en el cual se deben de leer 2 números, si son iguales que los múltiple, si el primero mayor que el segundo que los reste y sino que los sume. </p>
+            <p>Leer tres números diferentes e imprimir el numero mayor de los 3.</p>
         </aside>
 
         <div class="main">
+            <form id="formularioMayor">
+                <label for="numero1">Número 1:</label>
+                <input type="number" id="numero1" required>
+                <br><br>
+                <label for="numero2">Número 2:</label>
+                <input type="number" id="numero2" required><br><br>
+                <label for="numero3">Número 3:</label>
+                <input type="number" id="numero3" required><br><br>
+                <button type="submit">Comparar</button>
+            </form>
+            <p id="resultadoMayor"></p>
 
         </div>
 
@@ -24,5 +35,6 @@
             <a href="../07 Ejercicios2/ejercicios.html" >Regresar </a>
         </footer>
     </div>
+    <script src="../07 Ejercicios2/js/e2.js"></script>
 </body>
 </html>
