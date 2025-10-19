@@ -13,16 +13,31 @@
         </header>
         
         <aside>
-            <p>Deberán de crear un formulario en el cual se deben de leer 2 números, si son iguales que los múltiple, si el primero mayor que el segundo que los reste y sino que los sume. </p>
+            <p>Calcular la utilidad de un trabajador que recibe le reparto de utilidades anual, si este se le asigna un porcentaje de acuerdo a su salario mensual y depende de la antigüedad de la empresa </p>
+            <ul>
+                <li>Menos de 1 año: 5%</li>
+                <li>1 a 2 años: 7%</li>
+                <li>2 a 5 años: 10%</li>
+                <li>5 a 10 años: 15%</li>
+                <li>Más de 10 años: 20%</li>
+            </ul>
         </aside>
 
         <div class="main">
-
+            <form id="formularioUtilidad">
+                <label for="salarioMensual">Salario mensual:</label>
+                <input type="number" id="salarioMensual" min="1" step="1" required><br><br>
+                <label for="antiguedad">Antigüedad en años:</label>
+                <input type="number" id="antiguedad" min="0" max= "80"step="1" required><br><br>
+                <button type="submit">Calcular utilidad</button>
+            </form>
+            <p id="resultadoUtilidad"></p>
         </div>
 
         <footer>
             <a href="../07 Ejercicios2/ejercicios.html" >Regresar </a>
         </footer>
     </div>
+    <script src="../07 Ejercicios2/js/e4.js"></script>
 </body>
 </html>
