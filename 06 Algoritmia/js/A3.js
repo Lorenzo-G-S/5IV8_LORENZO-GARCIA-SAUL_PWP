@@ -31,14 +31,12 @@ function calcularPalabraMayor() {
         
         resultados.push(`${palabra} = ${cantidadUnicos} (${Array.from(caracteresUnicos).join(',')})`);
 
-
         if (cantidadUnicos > maxCaracteresUnicos) {
             maxCaracteresUnicos = cantidadUnicos;
             palabraMayor = palabra;
         }
     }
 
-    // Mostrar resultado
     let salida = 'Análisis de palabras:\n';
     salida += '===================\n\n';
     
@@ -48,6 +46,5 @@ function calcularPalabraMayor() {
     
     salida += '\n===================\n';
     salida += `Palabra con más caracteres únicos:\n"${palabraMayor}" con ${maxCaracteresUnicos} caracteres`;
-
     salidaOutput.textContent = salida;
 }
