@@ -1,0 +1,15 @@
+{
+  "name": "10-postman",
+  "version": "1.0.0",
+  "description": "ejemplo de endpoints",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
