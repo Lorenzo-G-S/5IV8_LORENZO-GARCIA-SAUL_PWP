@@ -1,7 +1,7 @@
 
 var instrucciones = [
-    "Utiliza las flechas de navegación para mover las piezas, ",
-    "Para Ordenar las piezas guiate por la imagen Objetivo"
+    "Utiliza las flechas de navegación para mover las piezas",
+    "Para ordenar las piezas guiate por la imagen objetivo"
 ];
 
 //vamos a guardar dentro de una variable los movimientos del rompecabezas
