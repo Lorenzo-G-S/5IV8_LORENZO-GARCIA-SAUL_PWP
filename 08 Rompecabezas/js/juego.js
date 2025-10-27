@@ -109,6 +109,7 @@ function moverEnDireccion(direccion){
     var nuevaColumnaPiezaVacia;
 
     //si se mueve
+    // Correción del movimiento de las piezas 
    if(direccion === codigosDireccion.ABAJO){
         nuevaFilaPiezaVacia = filaVacia - 1;  // INVERTIDO
         nuevaColumnaPiezaVacia = columnaVacia;
@@ -148,7 +149,7 @@ function intercambiarPosiciones(fila1, columna1, fila2, columa2){
 
 // Error ,ombres de variables inconsistentes
 function intercambiarPoscionesDOM(idPieza1, idPieza2){
-    var pieza1 = document.getElementById(idPieza1);  //era elementoPieza1
+    var pieza1 = document.getElementById(idPieza1);   // CORREGIDO: era elementoPieza1
     var pieza2 = document.getElementById(idPieza2); 
 
     //vamos a clonarlas
