@@ -1,7 +1,7 @@
 
 var instrucciones = [
     "Utiliza las flechas de navegación para mover las piezas",
-    "Para ordenar las piezas guiate por la imagen objetivo"
+    "Para ordenar las piezas guiate por la imagen bjetivo"
 ];
 
 //vamos a guardar dentro de una variable los movimientos del rompecabezas
@@ -72,12 +72,14 @@ function mostrarCartelGanador(){
 */
 
 function intercambiarPosicionesRompe(filaPos1, columnaPos1, filaPos2, columaPos2){
-    var pos1 = rompe[filaPos1, columnaPos1];
-    var pos2 = rompe[filaPos2, columaPos2];
+    var pos1 = rompe[filaPos1] [columnaPos1];
+    var pos2 = rompe[filaPos2] [columaPos2];
 
+    //Aquí hubo un error, En JavaScript, para acceder a matrices bidimensionales debes usar [fila][columna], no [fila, columna]. La coma crea una expresión de coma que simplemente devuelve el último valor.
+   
     //intercambio
-    rompe[filaPos1, columnaPos1] = pos2;
-    rompe[filaPos2, columaPos2] = pos1;
+    rompe[filaPos1] [columnaPos1] = pos2;
+    rompe[filaPos2] [columaPos2] = pos1;
 }
 
 //que se encargue de saber donde esta la pieza vacia
@@ -107,18 +109,18 @@ function moverEnDireccion(direccion){
     var nuevaColumnaPiezaVacia;
 
     //si se mueve
-    if(direccion === codigosDireccion.ABAJO){
-        nuevaFilaPiezaVacia = filaVacia + 1;
+   if(direccion === codigosDireccion.ABAJO){
+        nuevaFilaPiezaVacia = filaVacia - 1;  // INVERTIDO
         nuevaColumnaPiezaVacia = columnaVacia;
     } else if(direccion === codigosDireccion.ARRIBA){
-        nuevaFilaPiezaVacia = filaVacia - 1;
+        nuevaFilaPiezaVacia = filaVacia + 1;  // INVERTIDO
         nuevaColumnaPiezaVacia = columnaVacia;
     } else if(direccion === codigosDireccion.DERECHA){
         nuevaFilaPiezaVacia = filaVacia;
-        nuevaColumnaPiezaVacia = columnaVacia + 1;
+        nuevaColumnaPiezaVacia = columnaVacia - 1;  // INVERTIDO
     } else if(direccion === codigosDireccion.IZQUIERDA){
         nuevaFilaPiezaVacia = filaVacia;
-        nuevaColumnaPiezaVacia = columnaVacia - 1;
+        nuevaColumnaPiezaVacia = columnaVacia + 1;  // INVERTIDO
     }   
 
     //solo mando a llamar a que la posicion sea valida
@@ -127,36 +129,38 @@ function moverEnDireccion(direccion){
         intercambiarPosiciones(filaVacia, columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
         actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
         //tengo que guardar el ultimo movimiento
-        agregarUltimoMovimiento(direccion);
+        actualizarUltimoMovimiento(direccion); //Error al nombrar la función, era actualizar en lugar de agregar 
     }
 
 }
 
+//Misma Corrección de los corchetes
 function intercambiarPosiciones(fila1, columna1, fila2, columa2){
-    var pieza1 = rompe[fila1, columna1];
-    var pieza2 = rompe[fila2, columa2];
+    var pieza1 = rompe[fila1] [columna1];
+    var pieza2 = rompe[fila2] [columa2];
 
     //intercambio ya debe de ser por parte de los frames y el html
     intercambiarPosicionesRompe(fila1, columna1, fila2, columa2);
     //para el html
-    intercambiarPoscionesDOM('pieza'+pieza1, 'pieza'+pieza2);
+    intercambiarPoscionesDOM('pieza'+ pieza1, 'pieza'+ pieza2);
     
 }
 
+// Error ,ombres de variables inconsistentes
 function intercambiarPoscionesDOM(idPieza1, idPieza2){
-    var pieza1 = document.getElementById(idPieza1);
-    var pieza2 = document.getElementById(idPieza2);
+    var pieza1 = document.getElementById(idPieza1);  //era elementoPieza1
+    var pieza2 = document.getElementById(idPieza2); 
 
     //vamos a clonarlas
-    var padre = elementoPieza1.parentNode;
+    var padre = pieza1.parentNode;                       // CORREGIDO
 
     //lo clono
-    var clonElemento1 = elementoPieza1.cloneNode(true);
-    var clonElemento2 = elementoPieza2.cloneNode(true);
+    var clonElemento1 = pieza1.cloneNode(true);          // CORREGIDO
+    var clonElemento2 = pieza2.cloneNode(true);          // CORREGIDO
 
     //reemplazar a los padre con sus clones
-    padre.replaceChild(clonElemento1, elementoPieza2);
-    padre.replaceChild(clonElemento2, elementoPieza1);
+    padre.replaceChild(clonElemento1, pieza2);           // CORREGIDO
+    padre.replaceChild(clonElemento2, pieza1);           // CORREGIDO
 }
 
 //debo de actualizar los movimientos en el DOM
