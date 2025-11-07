@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen</title>
+</head>
+<body>
+    <header>
+        <h1>Buscador de Juegos</h1>
+        <p>Descubre los mejores juegos gratuitos</p>
+    </header>
+
+    <div class="main">
+        <section class="mitad">
+            <div class="contenedor-busqueda">
+                <div class="filtros">
+                    <select id="filtroPlataforma" class="selector-filtro">
+                        <option value="all">Todas las plataformas</option>
+                        <option value="pc">PC</option>
+                        <option value="browser">Navegador</option>
+                    </select>
+
+                    <select id="filtroCategoria" class="selector-filtro">
+                        <option value="">Todas las categorías</option>
+                        <option value="mmorpg">MMORPG</option>
+                        <option value="shooter">Shooter</option>
+                        <option value="strategy">Estrategia</option>
+                        <option value="moba">MOBA</option>
+                        <option value="racing">Carreras</option>
+                        <option value="sports">Deportes</option>
+                        <option value="social">Social</option>
+                        <option value="sandbox">Sandbox</option>
+                        <option value="fighting">Peleas</option>
+                        <option value="card">Cartas</option>
+                    </select>
+
+                    <select id="filtroOrdenamiento" class="selector-filtro">
+                        <option value="relevance">Relevancia</option>
+                        <option value="alphabetical">A-Z</option>
+                        <option value="release-date">Fecha de lanzamiento</option>
+                    </select>
+                </div>
+
+                <div class="botones-navegacion">
+                    <button id="btnAnterior" class="btn btn-nav">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <span id="indicadorPagina" class="indicador-pagina">1 / 1</span>
+                    <button id="btnSiguiente" class="btn btn-nav">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <button id="btnBuscar" class="btn btn-buscar">
+                    <i class="fa-solid fa-search"></i> Buscar Juegos
+                </button>
+            </div>
+
+            <div id="displayJuego" class="display-juego">
+                <img src="./img/freetogame-logo.png" alt="Logo Buscador de Juegos" class="imagen-placeholder">
+            </div>
+        </section>
+
+        <section id="datosJuego" class="mitad seccion-info">
+            <h2 id="tituloJuego" class="titulo-juego">Selecciona un juego</h2>
+            
+            <div class="informacion-juego">
+                <div class="fila-info">
+                    <span class="etiqueta">Género:</span>
+                    <span id="generoJuego" class="valor">-</span>
+                </div>
+                <div class="fila-info">
+                    <span class="etiqueta">Plataforma:</span>
+                    <span id="plataformaJuego" class="valor">-</span>
+                </div>
+                <div class="fila-info">
+                    <span class="etiqueta">Desarrollador:</span>
+                    <span id="desarrolladorJuego" class="valor">-</span>
+                </div>
+                <div class="fila-info">
+                    <span class="etiqueta">Publicador:</span>
+                    <span id="publicadorJuego" class="valor">-</span>
+                </div>
+                <div class="fila-info">
+                    <span class="etiqueta">Fecha de lanzamiento:</span>
+                    <span id="fechaLanzamientoJuego" class="valor">-</span>
+                </div>
+            </div>
+
+            <div class="contenedor-descripcion">
+                <h3>Descripción</h3>
+                <p id="descripcionJuego" class="descripcion-juego">
+                    Usa los filtros para buscar juegos o navega con las flechas.
+                </p>
+            </div>
+
+            <div class="contenedor-botones">
+                <button id="btnVerDetalles" class="btn btn-detalles" disabled>
+                    <i class="fa-solid fa-info-circle"></i> Ver Detalles Completos
+                </button>
+                <button id="btnJugar" class="btn btn-jugar" disabled>
+                    <i class="fa-solid fa-gamepad"></i> Jugar Ahora
+                </button>
+            </div>
+
+            <div id="requisitos-sistema" class="requisitos-sistema" style="display: none;">
+                <h3>Requisitos del Sistema</h3>
+                <div class="cuadricula-requisitos">
+                    <div class="item-requisito">
+                        <strong>Sistema Operativo:</strong>
+                        <span id="requisitoOS">-</span>
+                    </div>
+                    <div class="item-requisito">
+                        <strong>Procesador:</strong>
+                        <span id="requisitoProcesador">-</span>
+                    </div>
+                    <div class="item-requisito">
+                        <strong>Memoria:</strong>
+                        <span id="requisitoMemoria">-</span>
+                    </div>
+                    <div class="item-requisito">
+                        <strong>Gráficos:</strong>
+                        <span id="requisitoGraficos">-</span>
+                    </div>
+                    <div class="item-requisito">
+                        <strong>Almacenamiento:</strong>
+                        <span id="requisitoAlmacenamiento">-</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Datos proporcionados por <a href="https://www.freetogame.com" target="_blank">FreeToGame.com</a></p>
+    </footer>
+
+    <script src="./JS/funciones.js"></script>
+</body>
+</html>
