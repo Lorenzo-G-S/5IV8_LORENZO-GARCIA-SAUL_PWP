@@ -1,27 +1,21 @@
-// URL base de la API
+
 const URL_BASE_API = "https://www.freetogame.com/api";
 
-// Inicialización de la aplicación
 const buscadorJuegos = () => {
-    // Referencias a los elementos del DOM
     const elementos = {
-        // Filtros
         filtroPlataforma: document.getElementById("filtroPlataforma"),
         filtroCategoria: document.getElementById("filtroCategoria"),
         filtroOrdenamiento: document.getElementById("filtroOrdenamiento"),
-        
-        // Botones
+
         btnBuscar: document.getElementById("btnBuscar"),
         btnAnterior: document.getElementById("btnAnterior"),
         btnSiguiente: document.getElementById("btnSiguiente"),
         btnVerDetalles: document.getElementById("btnVerDetalles"),
         btnJugar: document.getElementById("btnJugar"),
         
-        // Display
         displayJuego: document.getElementById("displayJuego"),
         indicadorPagina: document.getElementById("indicadorPagina"),
         
-        // Información del juego
         tituloJuego: document.getElementById("tituloJuego"),
         generoJuego: document.getElementById("generoJuego"),
         plataformaJuego: document.getElementById("plataformaJuego"),
@@ -30,7 +24,6 @@ const buscadorJuegos = () => {
         fechaLanzamientoJuego: document.getElementById("fechaLanzamientoJuego"),
         descripcionJuego: document.getElementById("descripcionJuego"),
         
-        // Requisitos del sistema
         requisitosSistema: document.getElementById("requisitos-sistema"),
         requisitoOS: document.getElementById("requisitoOS"),
         requisitoProcesador: document.getElementById("requisitoProcesador"),
@@ -39,28 +32,21 @@ const buscadorJuegos = () => {
         requisitoAlmacenamiento: document.getElementById("requisitoAlmacenamiento")
     };
 
-    // Estado de la aplicación
     let estado = {
         juegos: [],
         indiceActual: 0,
         detallesJuegoActual: null
     };
 
-    // Imágenes de apoyo
     const imagenes = {
         cargando: "./img/cargar.png",
         noEncontrado: "./img/404.jpeg",
         placeholder: "./img/logo2.jpg"
     };
 
-    // ==================== FUNCIONES DE LA API ====================
 
-    /**
-     * Obtiene la lista de juegos según los filtros aplicados
-     */
     const obtenerJuegos = async () => {
         try {
-            // Construir la URL con los parámetros
             let apiUrl = `${URL_BASE_API}/games`;
             const parametros = [];
 
@@ -82,7 +68,6 @@ const buscadorJuegos = () => {
                 apiUrl += "?" + parametros.join("&");
             }
 
-            // Usar proxy CORS
             const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`;
             
             console.log("Obteniendo juegos desde:", apiUrl);
@@ -104,14 +89,10 @@ const buscadorJuegos = () => {
         }
     };
 
-    /**
-     * Obtiene los detalles completos de un juego específico
-     */
     const obtenerDetallesJuego = async (idJuego) => {
         try {
             const apiUrl = `${URL_BASE_API}/game?id=${idJuego}`;
             
-            // Usar proxy CORS
             const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`;
             
             console.log("Obteniendo detalles del juego desde:", apiUrl);
@@ -133,11 +114,6 @@ const buscadorJuegos = () => {
         }
     };
 
-    // ==================== FUNCIONES DE UI ====================
-
-    /**
-     * Muestra el estado de carga
-     */
     const mostrarCargando = () => {
         elementos.displayJuego.innerHTML = `
             <img src="${imagenes.cargando}" alt="Cargando..." class="cargando">
@@ -145,9 +121,6 @@ const buscadorJuegos = () => {
         deshabilitarBotones(true);
     };
 
-    /**
-     * Muestra la imagen de no encontrado
-     */
     const mostrarNoEncontrado = () => {
         elementos.displayJuego.innerHTML = `
             <img src="${imagenes.noEncontrado}" alt="No encontrado">
@@ -155,9 +128,6 @@ const buscadorJuegos = () => {
         reiniciarInfoJuego();
     };
 
-    /**
-     * Muestra la información del juego actual
-     */
     const mostrarJuegoActual = () => {
         if (estado.juegos.length === 0) {
             mostrarNoEncontrado();
@@ -166,13 +136,11 @@ const buscadorJuegos = () => {
 
         const juego = estado.juegos[estado.indiceActual];
 
-        // Actualizar imagen
         elementos.displayJuego.innerHTML = `
             <img src="${juego.thumbnail}" alt="${juego.title}" 
                  onerror="this.src='${imagenes.placeholder}'">
         `;
 
-        // Actualizar información básica
         elementos.tituloJuego.textContent = juego.title;
         elementos.generoJuego.textContent = juego.genre || "N/A";
         elementos.plataformaJuego.textContent = juego.platform || "N/A";
@@ -181,33 +149,24 @@ const buscadorJuegos = () => {
         elementos.fechaLanzamientoJuego.textContent = formatearFecha(juego.release_date);
         elementos.descripcionJuego.textContent = juego.short_description || "Sin descripción disponible.";
 
-        // Ocultar requisitos del sistema (se mostrarán al cargar detalles)
         elementos.requisitosSistema.style.display = "none";
 
-        // Actualizar indicador de página
         elementos.indicadorPagina.textContent = `${estado.indiceActual + 1} / ${estado.juegos.length}`;
 
-        // Habilitar botones
         elementos.btnVerDetalles.disabled = false;
         elementos.btnJugar.disabled = false;
 
-        // Actualizar estado de botones de navegación
         elementos.btnAnterior.disabled = estado.indiceActual === 0;
         elementos.btnSiguiente.disabled = estado.indiceActual === estado.juegos.length - 1;
     };
 
-    /**
-     * Muestra los detalles completos del juego
-     */
     const mostrarDetallesJuego = (detalles) => {
         if (!detalles) return;
 
-        // Actualizar descripción completa
         if (detalles.description) {
             elementos.descripcionJuego.textContent = detalles.description;
         }
 
-        // Mostrar requisitos del sistema si existen
         if (detalles.minimum_system_requirements) {
             const req = detalles.minimum_system_requirements;
             elementos.requisitoOS.textContent = req.os || "N/A";
@@ -220,16 +179,11 @@ const buscadorJuegos = () => {
             elementos.requisitosSistema.style.display = "none";
         }
 
-        // Mostrar screenshots si existen
         if (detalles.screenshots && detalles.screenshots.length > 0) {
-            // Podríamos crear una galería aquí
             console.log("Screenshots disponibles:", detalles.screenshots);
         }
     };
 
-    /**
-     * Resetea la información del juego
-     */
     const reiniciarInfoJuego = () => {
         elementos.tituloJuego.textContent = "Selecciona un juego";
         elementos.generoJuego.textContent = "-";
@@ -244,9 +198,6 @@ const buscadorJuegos = () => {
         elementos.btnJugar.disabled = true;
     };
 
-    /**
-     * Habilita o deshabilita los botones
-     */
     const deshabilitarBotones = (deshabilitado) => {
         elementos.btnBuscar.disabled = deshabilitado;
         elementos.btnAnterior.disabled = deshabilitado;
@@ -255,11 +206,6 @@ const buscadorJuegos = () => {
         elementos.btnJugar.disabled = deshabilitado;
     };
 
-    // ==================== FUNCIONES DE UTILIDAD ====================
-
-    /**
-     * Formatea la fecha en formato legible
-     */
     const formatearFecha = (cadenaFecha) => {
         if (!cadenaFecha) return "N/A";
         const fecha = new Date(cadenaFecha);
@@ -270,11 +216,6 @@ const buscadorJuegos = () => {
         });
     };
 
-    // ==================== MANEJADORES DE EVENTOS ====================
-
-    /**
-     * Busca juegos con los filtros actuales
-     */
     const manejarBusqueda = async () => {
         mostrarCargando();
         
@@ -299,9 +240,6 @@ const buscadorJuegos = () => {
         deshabilitarBotones(false);
     };
 
-    /**
-     * Navega al juego anterior
-     */
     const manejarAnterior = () => {
         if (estado.indiceActual > 0) {
             estado.indiceActual--;
@@ -310,9 +248,6 @@ const buscadorJuegos = () => {
         }
     };
 
-    /**
-     * Navega al siguiente juego
-     */
     const manejarSiguiente = () => {
         if (estado.indiceActual < estado.juegos.length - 1) {
             estado.indiceActual++;
@@ -321,15 +256,11 @@ const buscadorJuegos = () => {
         }
     };
 
-    /**
-     * Carga y muestra los detalles completos del juego
-     */
     const manejarVerDetalles = async () => {
         const juegoActual = estado.juegos[estado.indiceActual];
         
         if (!juegoActual) return;
 
-        // Si ya tenemos los detalles cargados, no hacer la petición de nuevo
         if (estado.detallesJuegoActual && estado.detallesJuegoActual.id === juegoActual.id) {
             return;
         }
@@ -350,9 +281,6 @@ const buscadorJuegos = () => {
         deshabilitarBotones(false);
     };
 
-    /**
-     * Abre el juego en una nueva ventana
-     */
     const manejarJugar = () => {
         const juegoActual = estado.juegos[estado.indiceActual];
         
@@ -363,24 +291,15 @@ const buscadorJuegos = () => {
         }
     };
 
-    // ==================== INICIALIZACIÓN ====================
-
-    /**
-     * Configura todos los event listeners
-     */
     const configurarEventos = () => {
-        // Botón de búsqueda
         elementos.btnBuscar.addEventListener('click', manejarBusqueda);
 
-        // Navegación
         elementos.btnAnterior.addEventListener('click', manejarAnterior);
         elementos.btnSiguiente.addEventListener('click', manejarSiguiente);
 
-        // Acciones del juego
         elementos.btnVerDetalles.addEventListener('click', manejarVerDetalles);
         elementos.btnJugar.addEventListener('click', manejarJugar);
 
-        // Buscar al presionar Enter en cualquier filtro
         elementos.filtroPlataforma.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') manejarBusqueda();
         });
@@ -391,32 +310,24 @@ const buscadorJuegos = () => {
             if (e.key === 'Enter') manejarBusqueda();
         });
 
-        // Atajos de teclado
         document.addEventListener('keydown', (e) => {
-            // Flecha izquierda: juego anterior
             if (e.key === 'ArrowLeft' && !elementos.btnAnterior.disabled) {
                 manejarAnterior();
             }
-            // Flecha derecha: siguiente juego
             if (e.key === 'ArrowRight' && !elementos.btnSiguiente.disabled) {
                 manejarSiguiente();
             }
         });
     };
 
-    /**
-     * Carga inicial de datos
-     */
+
     const inicializar = () => {
-        console.log("🎮 Buscador de Juegos inicializado");
+        console.log(" Buscador de Juegos inicializado");
         configurarEventos();
-        // Cargar algunos juegos por defecto
         manejarBusqueda();
     };
 
-    // Ejecutar la inicialización
     inicializar();
 };
 
-// Iniciar la aplicación cuando el DOM esté listo
 window.addEventListener('DOMContentLoaded', buscadorJuegos);
