@@ -76,5 +76,5 @@ console.log("=================================================");
 
 testCases.forEach((args, index) => {
     const result = memoizedSum(...args);
-    console.log(`\nResultado de la Llamada ${index + 1} (${args.join(', ')}): **${result}**`);
+    console.log(`\nResultado de la Llamada ${index + 1} (${args.join(', ')}): *${result}*`);
 });

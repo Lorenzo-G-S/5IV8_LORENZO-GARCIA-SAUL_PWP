@@ -1,0 +1,100 @@
+/* Fuente y layout general */
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  max-width: 1000px;
+  margin: 2rem auto;
+  background-color: #d4e0e8;
+  line-height: 1.4;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #a7b3bc;
+}
+
+/* Encabezados */
+h1 {
+  text-align: center;
+  background-color: #34495e;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+/* Formularios */
+form {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  height: 36px;
+  width: 100%;
+  max-width: 420px;
+  border: 2px solid #09c022;
+  padding: 0 0.75rem;
+  border-radius: 18px;
+  outline: none;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  background: #fff;
+}
+
+input:focus {
+  border-color: #078b1b;
+  box-shadow: 0 0 0 4px rgba(9, 192, 34, 0.15);
+}
+
+/* Botones */
+button {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 10px 18px;
+  border: 2px solid #1f2d3a;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #3b536a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Lista de estudiantes */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+}
+
+li {
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+  background: #eef4f8;
+  border: 1px solid #cfd8de;
+  border-radius: 10px;
+}
+
+/* Enlaces (Editar / Eliminar) */
+a {
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
+  background: #2c3e50;
+  border-radius: 14px;
+  transition: transform 0.15s ease, background 0.2s ease;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+}
+
+a:hover {
+  background: #a0b2bd;
+  transform: translateY(-1px);
+}
