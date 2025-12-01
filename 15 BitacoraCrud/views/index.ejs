@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora de Control de Lubricantes</title>
+    <link rel="stylesheet" href="/css/15.css">
+</head>
+<body>
+    <h1> Bitácora de Control de Lubricantes</h1>
+    
+    <!-- Formulario de Registro -->
+    <form action="/lubricantes" method="POST" id="formRegistro">
+        <div class="form-group">
+            <label for="equipo_componente">
+                Equipo/Componente <span class="required">*</span>
+            </label>
+            <input 
+                type="text" 
+                id="equipo_componente" 
+                name="equipo_componente" 
+                placeholder="Ej: Compresor Principal A-101"
+                maxlength="200"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="tipo_fluido">
+                Tipo de Fluido/Lubricante <span class="required">*</span>
+            </label>
+            <input 
+                type="text" 
+                id="tipo_fluido" 
+                name="tipo_fluido" 
+                placeholder="Ej: Aceite ISO VG 46 - Shell Tellus"
+                maxlength="150"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="fecha_cambio">
+                Fecha de Cambio/Relleno <span class="required">*</span>
+            </label>
+            <input 
+                type="date" 
+                id="fecha_cambio" 
+                name="fecha_cambio" 
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="cantidad_utilizada">
+                Cantidad Utilizada (Litros) <span class="required">*</span>
+            </label>
+            <input 
+                type="number" 
+                id="cantidad_utilizada" 
+                name="cantidad_utilizada" 
+                placeholder="Ej: 15.50"
+                step="0.01"
+                min="0.01"
+                max="10000"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="muestra_analisis">
+                Muestra para Análisis <span class="required">*</span>
+            </label>
+            <select id="muestra_analisis" name="muestra_analisis" required>
+                <option value="">-- Seleccione --</option>
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="proximo_cambio">
+                Próximo Cambio Estimado <span class="required">*</span>
+            </label>
+            <input 
+                type="date" 
+                id="proximo_cambio" 
+                name="proximo_cambio" 
+                required>
+        </div>
+
+        <div class="form-group full-width">
+            <label for="resultados_analisis">
+                Resultados del Análisis (Opcional)
+            </label>
+            <textarea 
+                id="resultados_analisis" 
+                name="resultados_analisis" 
+                placeholder="Ej: Análisis LAB-2024-1145: Viscosidad dentro de rango..."
+                maxlength="500"></textarea>
+        </div>
+
+        <button type="submit"> Registrar Lubricante</button>
+    </form>
+
+    <!-- Lista de Registros -->
+    <h2> Registros de Lubricación</h2>
+    <div class="table-container">
+        <% if (lubricantes.length === 0) { %>
+            <p style="text-align: center; padding: 2rem; color: #7f8c8d;">
+                No hay registros en la bitácora. Agrega el primer registro.
+            </p>
+        <% } else { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Equipo/Componente</th>
+                        <th>Tipo de Fluido</th>
+                        <th>Fecha Cambio</th>
+                        <th>Cantidad (L)</th>
+                        <th>Muestra</th>
+                        <th>Resultados</th>
+                        <th>Próximo Cambio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% lubricantes.forEach(function(lubricante) { %>
+                        <tr>
+                            <td><strong>#<%= lubricante.id %></strong></td>
+                            <td><%= lubricante.equipo_componente %></td>
+                            <td><%= lubricante.tipo_fluido %></td>
+                            <td><%= new Date(lubricante.fecha_cambio).toLocaleDateString('es-MX') %></td>
+                            <td><%= lubricante.cantidad_utilizada %></td>
+                            <td>
+                                <span class="badge <%= lubricante.muestra_analisis === 'Sí' ? 'badge-si' : 'badge-no' %>">
+                                    <%= lubricante.muestra_analisis %>
+                                </span>
+                            </td>
+                            <td>
+                                <%= lubricante.resultados_analisis 
+                                    ? (lubricante.resultados_analisis.length > 50 
+                                        ? lubricante.resultados_analisis.substring(0, 50) + '...' 
+                                        : lubricante.resultados_analisis)
+                                    : 'N/A' %>
+                            </td>
+                            <td><%= new Date(lubricante.proximo_cambio).toLocaleDateString('es-MX') %></td>
+                            <td class="actions">
+                                <a href="/lubricantes/edit/<%= lubricante.id %>" class="edit"> Editar</a>
+                                <a href="/lubricantes/delete/<%= lubricante.id %>" 
+                                   class="delete"
+                                   onclick="return confirm('¿Estás seguro de eliminar este registro?\n\nEquipo: <%= lubricante.equipo_componente %>')">
+                                    Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+
+    <script>
+        // Validación de fechas en el cliente
+        document.getElementById('formRegistro').addEventListener('submit', function(e) {
+            const fechaCambio = new Date(document.getElementById('fecha_cambio').value);
+            const proximoCambio = new Date(document.getElementById('proximo_cambio').value);
+            
+            if (proximoCambio <= fechaCambio) {
+                e.preventDefault();
+                alert('❌ Error: La fecha del próximo cambio debe ser posterior a la fecha de cambio actual.');
+                return false;
+            }
+        });
+
+        // Establecer fecha máxima de cambio como hoy
+        document.getElementById('fecha_cambio').setAttribute('max', new Date().toISOString().split('T')[0]);
+        
+        // Establecer fecha mínima del próximo cambio como mañana
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        document.getElementById('proximo_cambio').setAttribute('min', tomorrow.toISOString().split('T')[0]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Registro - Bitácora de Lubricantes</title>
+    <link rel="stylesheet" href="/css/15.css">
+</head>
+<body>
+    <h1> Editar Registro de Lubricación</h1>
+    
+    <form action="/lubricantes/update/<%= lubricante.id %>" method="POST" id="formEdicion">
+        <div class="form-group">
+            <label for="equipo_componente">
+                Equipo/Componente <span class="required">*</span>
+            </label>
+            <input 
+                type="text" 
+                id="equipo_componente" 
+                name="equipo_componente" 
+                value="<%= lubricante.equipo_componente %>"
+                maxlength="200"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="tipo_fluido">
+                Tipo de Fluido/Lubricante <span class="required">*</span>
+            </label>
+            <input 
+                type="text" 
+                id="tipo_fluido" 
+                name="tipo_fluido" 
+                value="<%= lubricante.tipo_fluido %>"
+                maxlength="150"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="fecha_cambio">
+                Fecha de Cambio/Relleno <span class="required">*</span>
+            </label>
+            <input 
+                type="date" 
+                id="fecha_cambio" 
+                name="fecha_cambio" 
+                value="<%= lubricante.fecha_cambio %>"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="cantidad_utilizada">
+                Cantidad Utilizada (Litros) <span class="required">*</span>
+            </label>
+            <input 
+                type="number" 
+                id="cantidad_utilizada" 
+                name="cantidad_utilizada" 
+                value="<%= lubricante.cantidad_utilizada %>"
+                step="0.01"
+                min="0.01"
+                max="10000"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="muestra_analisis">
+                Muestra para Análisis <span class="required">*</span>
+            </label>
+            <select id="muestra_analisis" name="muestra_analisis" required>
+                <option value="Sí" <%= lubricante.muestra_analisis === 'Sí' ? 'selected' : '' %>>Sí</option>
+                <option value="No" <%= lubricante.muestra_analisis === 'No' ? 'selected' : '' %>>No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="proximo_cambio">
+                Próximo Cambio Estimado <span class="required">*</span>
+            </label>
+            <input 
+                type="date" 
+                id="proximo_cambio" 
+                name="proximo_cambio" 
+                value="<%= lubricante.proximo_cambio %>"
+                required>
+        </div>
+
+        <div class="form-group full-width">
+            <label for="resultados_analisis">
+                Resultados del Análisis (Opcional)
+            </label>
+            <textarea 
+                id="resultados_analisis" 
+                name="resultados_analisis" 
+                maxlength="500"><%= lubricante.resultados_analisis || '' %></textarea>
+        </div>
+
+        <div style="display: flex; gap: 1rem; grid-column: 1 / -1;">
+            <button type="submit" style="flex: 1;"> Actualizar Registro</button>
+            <a href="/" style="flex: 1; text-align: center; padding: 12px; background: #95a5a6; line-height: 1.5;">
+                ↩ Cancelar
+            </a>
+        </div>
+    </form>
+
+    <script>
+        // Validación de fechas en el cliente
+        document.getElementById('formEdicion').addEventListener('submit', function(e) {
+            const fechaCambio = new Date(document.getElementById('fecha_cambio').value);
+            const proximoCambio = new Date(document.getElementById('proximo_cambio').value);
+            
+            if (proximoCambio <= fechaCambio) {
+                e.preventDefault();
+                alert(' Error: La fecha del próximo cambio debe ser posterior a la fecha de cambio actual.');
+                return false;
+            }
+        });
+
+        // Establecer fecha máxima de cambio como hoy
+        document.getElementById('fecha_cambio').setAttribute('max', new Date().toISOString().split('T')[0]);
+        
+        // Establecer fecha mínima del próximo cambio
+        const fechaCambio = document.getElementById('fecha_cambio').value;
+        if (fechaCambio) {
+            const minProximoCambio = new Date(fechaCambio);
+            minProximoCambio.setDate(minProximoCambio.getDate() + 1);
+            document.getElementById('proximo_cambio').setAttribute('min', minProximoCambio.toISOString().split('T')[0]);
+        }
+    </script>
+</body>
+</html>
