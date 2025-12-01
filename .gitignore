@@ -1,0 +1,29 @@
+# Root .gitignore for workspace
+
+# Ignore node_modules anywhere in the repo
+**/node_modules/
+
+# Ignore environment files but allow example files
+**/.env
+**/.env.local
+!**/.env.example
+
+# Ignore editor folders
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Build / output
+dist/
+build/
+
+# Coverage
+coverage/
