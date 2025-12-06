@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gato de Gatos - Resultado</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/game.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1> GATO DE GATOS </h1>
+            <p>Resultado de la Partida</p>
+        </header>
+
+        <aside>
+            <h2> Estadísticas Globales</h2>
+            <hr>
+            <h3><%= jugador1.nombre %></h3>
+            <p>
+                 Partidas Ganadas: <%= jugador1.partidas_ganadas %><br>
+                 Partidas Jugadas: <%= jugador1.partidas_jugadas %><br>
+                 Empates: <%= jugador1.partidas_empatadas %><br>
+                 Puntaje Total: <%= jugador1.puntaje_total %>
+            </p>
+            <hr>
+            <h3><%= jugador2.nombre %></h3>
+            <p>
+                 Partidas Ganadas: <%= jugador2.partidas_ganadas %><br>
+                 Partidas Jugadas: <%= jugador2.partidas_jugadas %><br>
+                 Empates: <%= jugador2.partidas_empatadas %><br>
+                 Puntaje Total: <%= jugador2.puntaje_total %>
+            </p>
+        </aside>
+
+        <main class="main">
+            <div class="victory-screen">
+                <% if (ganador) { %>
+                    <h2> ¡VICTORIA! </h2>
+                    <div class="winner-name">
+                        <%= ganador.nombre %>
+                    </div>
+                    <p style="font-size: 2rem; color: #2c3e50; margin: 2rem 0;">
+                        ¡Ha ganado la partida!
+                    </p>
+                <% } else { %>
+                    <h2> ¡EMPATE! </h2>
+                    <p style="font-size: 2rem; color: #2c3e50; margin: 2rem 0;">
+                        ¡Ambos jugadores empataron!
+                    </p>
+                <% } %>
+
+                <hr style="margin: 2rem 0;">
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3> <%= jugador1.nombre %></h3>
+                        <div class="stat-item">
+                            <span>Símbolo:</span>
+                            <strong style="font-size: 1.5rem;">O</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Puntaje Total:</span>
+                            <strong><%= jugador1.puntaje_total %></strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Partidas Ganadas:</span>
+                            <strong><%= jugador1.partidas_ganadas %></strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Total Jugadas:</span>
+                            <strong><%= jugador1.partidas_jugadas %></strong>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3> <%= jugador2.nombre %></h3>
+                        <div class="stat-item">
+                            <span>Símbolo:</span>
+                            <strong style="font-size: 1.5rem;">X</strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Puntaje Total:</span>
+                            <strong><%= jugador2.puntaje_total %></strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Partidas Ganadas:</span>
+                            <strong><%= jugador2.partidas_ganadas %></strong>
+                        </div>
+                        <div class="stat-item">
+                            <span>Total Jugadas:</span>
+                            <strong><%= jugador2.partidas_jugadas %></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="margin: 2rem 0;">
+
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <form action="/iniciar-partida" method="POST" style="display: inline;">
+                        <input type="hidden" name="nombre1" value="<%= jugador1.nombre %>">
+                        <input type="hidden" name="nombre2" value="<%= jugador2.nombre %>">
+                        <button type="submit"> Jugar de Nuevo</button>
+                    </form>
+                    <a href="/"> Volver al Menú</a>
+                    <a href="/ranking"> Ver Ranking</a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p><a href="../index.html">Regresar</a></p>
+        </footer>
+    </div>
+</body>
+</html>

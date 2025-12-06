@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gato de Gatos - Ranking</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/game.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1> RANKING DE JUGADORES </h1>
+            <p>Tabla de Líderes - Gato de Gatos</p>
+        </header>
+
+        <aside>
+            <h2> Información</h2>
+            <p>
+                Este ranking muestra a todos los jugadores ordenados por su puntaje total.
+            </p>
+            <hr>
+            <h3>Sistema de Puntos:</h3>
+            <p>
+                 <strong>Victoria:</strong> +3 puntos<br>
+                 <strong>Empate:</strong> +1 punto<br>
+                 <strong>Derrota:</strong> 0 puntos
+            </p>
+            <hr>
+            <p>
+                Los mejores jugadores aparecen destacados en el ranking.
+            </p>
+            <hr>
+            <a href="/" class="f"> Volver al Menú</a>
+        </aside>
+
+        <main class="main">
+            <article>
+                <h2> Clasificación General</h2>
+                
+                    <% if (jugadores.length === 0) { %>
+                    <p style="text-align: center; padding: 3rem; font-size: 1.2rem; color: #666;">
+                        Aún no hay jugadores registrados.<br>
+                        ¡Sé el primero en jugar!
+                    </p>
+                <% } else { %>
+                    <div class="ranking-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Jugador</th>
+                                    <th>Puntaje</th>
+                                    <th>Ganadas</th>
+                                    <th>Jugadas</th>
+                                    <th>Empates</th>
+                                    <th>% Victoria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% jugadores.forEach((jugador, index) => { %>
+                                    <tr>
+                                        <td>
+                                            <span class="ranking-position <%= index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : '' %>">
+                                                    <% if (index === 0) { %>
+                                                    1
+                                                <% } else if (index === 1) { %>
+                                                    2
+                                                <% } else if (index === 2) { %>
+                                                    3
+                                                <% } else { %>
+                                                    <%= index + 1 %>
+                                                <% } %>
+                                            </span>
+                                        </td>
+                                        <td><strong><%= jugador.nombre %></strong></td>
+                                        <td><strong style="color: #09c022;"><%= jugador.puntaje_total %></strong></td>
+                                        <td><%= jugador.partidas_ganadas %></td>
+                                        <td><%= jugador.partidas_jugadas %></td>
+                                        <td><%= jugador.partidas_empatadas %></td>
+                                        <td>
+                                            <% 
+                                                const porcentaje = jugador.partidas_jugadas > 0 
+                                                    ? ((jugador.partidas_ganadas / jugador.partidas_jugadas) * 100).toFixed(1) 
+                                                    : 0;
+                                            %>
+                                            <%= porcentaje %>%
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } %>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="font-size: 0.9rem; color: #666;">
+                        Total de jugadores registrados: <strong><%= jugadores.length %></strong>
+                    </p>
+                </div>
+            </article>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/"> Volver al Inicio</a>
+                <a href="javascript:location.reload()"> Actualizar Ranking</a>
+            </div>
+        </main>
+
+        <footer>
+            <p><a href="../index.html">Regresar</a></p>
+        </footer>
+    </div>
+</body>
+</html>

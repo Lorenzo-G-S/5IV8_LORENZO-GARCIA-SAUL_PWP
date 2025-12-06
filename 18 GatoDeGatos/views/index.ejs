@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gato de Gatos - Inicio</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1> GATO DE GATOS </h1>
+            <p>Ultimate Tic-Tac-Toe</p>
+        </header>
+
+        <aside>
+            <h2> ¿Cómo jugar?</h2>
+            <p>
+                El <strong>Gato de Gatos</strong> es una versión avanzada del clásico Gato.
+            </p>
+            <hr>
+            <h3>Reglas:</h3>
+            <p>
+                1️ El tablero está compuesto por 9 tableros pequeños dentro de un tablero grande.
+            </p>
+            <p>
+                2️ Los jugadores pueden elegir libremente en qué tablero pequeño jugar.
+            </p>
+            <p>
+                3️ Para ganar un tablero pequeño, debes conectar 3 símbolos en línea.
+            </p>
+            <p>
+                4️ Si hay empate en un tablero pequeño, se bloquea sin contar para nadie.
+            </p>
+            <p>
+                5️ <strong>Victoria:</strong> Conectar 3 en el tablero grande O tener más tableros ganados.
+            </p>
+            <hr>
+            <p>
+                <strong>Puntos:</strong><br>
+                 Ganar = +3 puntos<br>
+                 Empatar = +1 punto
+            </p>
+        </aside>
+
+        <main class="main">
+            <article>
+                <h2>Iniciar Nueva Partida</h2>
+                <p style="margin-bottom: 2rem;">
+                    Ingresa los nombres de los jugadores para comenzar
+                </p>
+                
+                <form action="/iniciar-partida" method="POST">
+                    <div class="form-group">
+                        <label for="nombre1"> Jugador 1 (O):</label>
+                        <input 
+                            type="text" 
+                            id="nombre1" 
+                            name="nombre1" 
+                            placeholder="Nombre del Jugador 1"
+                            required
+                            maxlength="50"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre2"> Jugador 2 (X):</label>
+                        <input 
+                            type="text" 
+                            id="nombre2" 
+                            name="nombre2" 
+                            placeholder="Nombre del Jugador 2"
+                            required
+                            maxlength="50"
+                        >
+                    </div>
+
+                    <button type="submit"> Comenzar Partida</button>
+                </form>
+            </article>
+
+            <article style="margin-top: 2rem;">
+                <h2> Ver Ranking</h2>
+                <p>Consulta la tabla de líderes con todos los jugadores</p>
+                <a href="/ranking"> Ver Ranking Completo</a>
+            </article>
+        </main>
+
+        <footer>
+            <p><a href="../index.html">Regresar</a></p>
+        </footer>
+    </div>
+</body>
+</html>
