@@ -1,0 +1,71 @@
+/* Estilos base tomados del estilo general del workspace, adaptados para CRUDSeparado */
+:root{
+  --bg: #dfeaf2;
+  --primary: #34495e;
+  --accent: #7299B4;
+  --card: #ffffff;
+  --muted: #7f8c8d;
+}
+
+*{box-sizing: border-box}
+body{
+  font-family: 'georgia', serif;
+  background: var(--bg);
+  margin: 0;
+  color: #222;
+}
+
+header.site-header{
+  background: var(--primary);
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: 4px solid #001B2E;
+}
+
+.container{
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.btn, a.btn{
+  display: inline-block;
+  padding: 10px 18px;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 2px solid #000;
+}
+.btn:hover{ background: var(--accent); color: #000 }
+
+/* Tabla de cursos */
+table.table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+table.table th, table.table td{
+  padding: 0.75rem 0.5rem;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+}
+table.table thead th{
+  background: var(--primary);
+  color: #fff;
+}
+
+.empty-state{
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem;
+}
+
+@media (max-width: 720px){
+  .container{ padding: 1rem }
+  table.table th, table.table td{ font-size: 0.9rem }
+}

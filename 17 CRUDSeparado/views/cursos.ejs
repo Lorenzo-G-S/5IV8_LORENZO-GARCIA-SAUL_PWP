@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos del Circulo Infernal</title>
+    <link rel="stylesheet" href="../css/17.css">
+</head>
+<body>
+    <main class="container" >
+        <p><a class="btn" href="/">↩ Regresar</a></p>
+        <table class="table" border="1" >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Docente</th>
+                </tr>
+            </thead>
+            <%
+                if(Array.isArray(cursos) && cursos.length > 0){ 
+            %>
+            <tbody>
+                <tr>
+                    <% 
+                    cursos.forEach(function(curso){
+                    %>
+                    <td><%= curso.id %></td>   
+                    <td><%= curso.nombre || '' %></td>   
+                    <td><%= curso.descripcion || '' %></td>       
+                    <td><%= curso.docente || '' %></td>             
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <% } else { %>
+            <div class="empty-state">No hay cursos disponibles en este momento, existe un error al cargarlos</div>
+            <p><a class="btn" href="/">Volver a Bienvenida</a></p>
+        <% } %>
+    </main>
+</body>
+</html>

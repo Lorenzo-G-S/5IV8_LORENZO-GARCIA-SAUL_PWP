@@ -2,7 +2,11 @@
 node_modules/
 
 # Variables de entorno (contienen contraseñas y datos sensibles)
+# Ignorar archivos de entorno reales, pero incluir un ejemplo
 .env
+.env.local
+.env.*.local
+!.env.example
 
 # Archivos de configuración de VS Code
 .vscode/
